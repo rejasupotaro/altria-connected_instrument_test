@@ -1,7 +1,7 @@
 require "rails/engine"
 
 module Altria
-  module ProcessingTime
+  module ConnectedInstrumentTest
     class Railtie < Rails::Engine
       initializer "altria.connected_instrument_test.set_autoload_paths", before: :set_autoload_paths do |app|
         app.config.autoload_paths << File.expand_path("../../../", __FILE__)

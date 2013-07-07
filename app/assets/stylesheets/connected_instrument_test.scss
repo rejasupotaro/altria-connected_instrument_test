@@ -1,1 +1,76 @@
 @import "mixin";
+
+@mixin radius_left6 {
+  -webkit-border-top-left-radius: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  -moz-border-radius-topleft: 6px;
+  -moz-border-radius-bottomleft: 6px;
+}
+
+@mixin radius_right6 {
+  -webkit-border-top-right-radius: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  -moz-border-radius-bottomright: 6px;
+}
+
+section.connected_instrument_test {
+  $success_green: #27AE60;
+
+  h1:before {
+    content: "\F0E4";
+  }
+
+  #test_success_rate_bar {
+    height: 20px;
+
+    #success_rate {
+    @include radius_left6;
+      width: 100%;
+      height: 20px;
+      background-color: $success_green;
+      display: block;
+      float: left;
+    }
+
+    #failure_rate {
+      @include radius_right6;
+      width: 0%;
+      height: 20px;
+      background-color: red;
+      display: block;
+      float: left;
+    }
+  }
+
+  .testsuite {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  .success {
+    color: $success_green;
+  }
+
+  .failure {
+    color: red;
+  }
+
+  .testcases {
+    margin-top: 10px;
+  }
+
+  .error_logs {
+    .error_log {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: pink;
+      @include radius_left6;
+      @include radius_right6;
+    }
+  }
+
+  .hide {
+    display: none;
+  }
+}

@@ -1,0 +1,27 @@
+- content_for :head do
+  = javascript_include_tag "connected_instrument_test"
+  = stylesheet_link_tag "connected_instrument_test"
+
+section.connected_instrument_test
+  h1 Instrument Test Result
+
+  - if !@testcases.nil?
+    div class="testsuite #{@is_all_tests_success}"
+      = @testsuite
+
+    div id="test_success_rate_bar" data-rate="#{@success_rate}"
+      span id="success_rate"
+      span id="failure_rate"
+
+    div class="testcases hide"
+      - for testcase in @testcases
+        div id="testcase"
+          = testcase
+
+    div class="error_logs"
+      - for failure in @failures
+        div class="error_log"
+          = failure
+
+  javascript:
+    window.success_rate = #{@success_rate};
